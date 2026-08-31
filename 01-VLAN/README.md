@@ -48,8 +48,8 @@ configure terminal
 
 vlan 10
 name INFORMATIQUE
+exit
 
 vlan 20
 name RH
-
 exit
