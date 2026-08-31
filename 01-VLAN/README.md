@@ -53,3 +53,20 @@ exit
 vlan 20
 name RH
 exit
+```
+
+---
+
+### Configuration du port de PC1
+
+PC1 est connecté au port FastEthernet0/1 :
+
+```cisco
+interface FastEthernet0/1
+switchport mode access
+switchport access vlan 10
+exit
+```
+
+
+
