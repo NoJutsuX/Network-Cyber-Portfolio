@@ -65,6 +65,71 @@ switchport mode access
 switchport access vlan 10
 exit
 ```
+Le port Fa0/1 appartient maintenant au VLAN 10.
+
+### Configuration du port de PC2
+
+PC2 est connecté au port FastEthernet0/2 :
+
+```cisco
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 20
+exit
+```
+Le port Fa0/2 appartient maintenant au VLAN 20.
+
+### Vérification de la configuration
+
+```cisco
+show vlan brief
+```
+### Résultat
+
+```cisco
+VLAN 10 → INFORMATIQUE → Fa0/1
+VLAN 20 → RH           → Fa0/2
+```
+La configuration des VLAN et l'affectation des ports ont été vérifiées avec succès.
+
+---
+
+## Test de communication
+
+Un test de connectivité est effectué depuis PC1 vers PC2.
+
+### Commande
+
+```cisco
+ping 192.168.20.10
+```
+
+### Résultat
+
+```cisco
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+```
+Le ping échoue comme prévu.
+
+---
+
+## Explication
+
+PC1 appartient au VLAN 10 et PC2 appartient au VLAN 20.
+Les deux VLAN sont des domaines de broadcast distincts.
+Le switch assure la séparation des deux réseaux, mais aucun routage inter-VLAN n'est configuré.
+La communication entre PC1 et PC2 est donc impossible.
+
+---
+
+## Conclusion
+
+Ce lab permet de mettre en pratique la création et la configuration de VLAN sur un switch Cisco, ainsi que la vérification de l'isolation entre deux réseaux.
+
+
 
 
 
